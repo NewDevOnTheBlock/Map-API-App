@@ -15,7 +15,6 @@ import TheWelcome from './components/TheWelcome.vue'
   <main>
     <TheWelcome />
   </main>
-  <h1>Test</h1>
 </template>
 
 <style scoped>
