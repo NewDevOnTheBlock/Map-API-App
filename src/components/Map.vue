@@ -9,7 +9,5 @@
 </script>
 
 <style lang="scss" scoped>
-  p {
-    border: 2px solid red;
-  }
+
 </style>
