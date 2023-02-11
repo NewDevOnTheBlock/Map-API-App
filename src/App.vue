@@ -41,7 +41,7 @@ export default {
 }
 
 .map {
-  background-color: lightblue;
+  height: 100vh;
 }
 
 .search {
