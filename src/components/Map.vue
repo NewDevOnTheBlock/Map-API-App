@@ -7,9 +7,7 @@
         layer-type="base"
         name="OpenStreetMap"
       ></l-tile-layer>
-      <l-marker :lat-lng="markerLatLng">
-        <l-icon :icon-url="icon"></l-icon>
-      </l-marker>
+      <l-marker :lat-lng="markerLatLng" :icon="icon"></l-marker>
     </l-map>
   </div>
 </template>
@@ -17,14 +15,14 @@
 <script lang="ts">
 import "leaflet/dist/leaflet.css";
 import { LMap, LTileLayer, LMarker, LIcon } from "@vue-leaflet/vue-leaflet";
-import markerIcon from "../../node_modules/leaflet/dist/images/marker-icon.png";
+import L from "leaflet";
 
 export default {
   components: {
     LMap,
     LTileLayer,
     LMarker,
-    LIcon
+    LIcon,
   },
   data() {
     return {
@@ -33,12 +31,13 @@ export default {
         '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 8,
       markerLatLng: [47.31322, -1.319482],
-      icon: markerIcon,
+      icon: L.icon({
+        iconUrl: "../../node_modules/leaflet/dist/images/marker-icon.png",
+        iconAnchor: [16, 37],
+      }),
     };
   },
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
