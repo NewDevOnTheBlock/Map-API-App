@@ -35,7 +35,7 @@ export default {
   display: flex;
   flex-direction: row;
   
-  div {
+  .map, .search {
     width: 50%;
   }
 }

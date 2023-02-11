@@ -29,7 +29,7 @@ export default {
     return {
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:
-        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a>',
+        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       zoom: 8,
       markerLatLng: [47.31322, -1.319482],
     };
@@ -38,8 +38,5 @@ export default {
 </script>
 
 <style lang="scss">
-.leaflet-touch .leaflet-control-layers,
-.leaflet-touch .leaflet-bar {
-  border: none;
-}
+
 </style>
