@@ -47,4 +47,15 @@ export default {
 .search {
   background-color: grey;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+
+    .map, .search {
+      width: 100%;
+      height: 50vh;
+    }
+  }
+}
 </style>
