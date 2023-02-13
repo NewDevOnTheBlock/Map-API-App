@@ -51,7 +51,7 @@ export default {
     return {
       text: "",
       items: [],
-      icon: "../../node_modules/leaflet/dist/images/marker-icon.png",
+      icon: "../images/marker-icon.png",
     };
   },
   methods: {
