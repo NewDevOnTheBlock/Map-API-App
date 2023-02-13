@@ -39,6 +39,7 @@ import {
   LPopup,
 } from "@vue-leaflet/vue-leaflet";
 import L from "leaflet";
+import icon from "../images/marker-icon.png"
 
 export default {
   components: {
@@ -56,7 +57,7 @@ export default {
       zoom: 8,
       markerLatLng: ["47.31322", "-1.319482"],
       icon: L.icon({
-        iconUrl: "../../node_modules/leaflet/dist/images/marker-icon.png",
+        iconUrl: icon,
         iconAnchor: [16, 37],
       }),
     };
