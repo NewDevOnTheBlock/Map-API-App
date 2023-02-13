@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="map">
-      <Map />
+      <Map :lat="lat" :lon="lon" />
     </div>
     <div class="search">
-      <Search />
+      <Search @position="position($event)" />
     </div>
   </div>
 </template>
@@ -18,6 +18,18 @@ export default {
   components: {
     Map,
     Search,
+  },
+  data() {
+    return {
+      lat: 0,
+      lon: 0,
+    };
+  },
+  methods: {
+    position(event: any) {
+      this.lat = event.lat;
+      this.lon = event.lon;
+    },
   },
 };
 </script>
@@ -34,28 +46,42 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: row;
-  
-  .map, .search {
+
+  .map,
+  .search {
     width: 50%;
+    height: 100vh;
   }
 }
 
-.map {
-  height: 100vh;
-}
-
 .search {
-  background-color: grey;
+  background: rgb(31, 31, 31);
 }
 
-@media screen and (max-width: 768px) {
+// Removing Scrollbar
+body {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+}
+
+@media screen and (max-width: 912px) {
   .container {
     flex-direction: column;
 
-    .map, .search {
+    .map,
+    .search {
       width: 100%;
       height: 50vh;
     }
+  }
+
+  .list {
+    height: calc(100vh - (50vh + 146px));
+    overflow-y: scroll;
   }
 }
 </style>
