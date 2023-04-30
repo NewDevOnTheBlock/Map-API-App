@@ -1,47 +1,86 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <main class="container">
+    <div class="map">
+      <Map :lat="lat" :lon="lon" />
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
+    <div class="search">
+      <Search @position="position($event)"/>
+    </div>
   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script lang="ts">
+import Map from './components/Map.vue';
+  import Search from './components/Search.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  export default {
+    name: "App",
+    components: {
+      Map,
+      Search,
+    },
+    data() {
+      return {
+        lat: 0,
+        lon: 0
+      };
+    },
+    methods: {
+      position(event: any) {
+        this.lat = event.lat;
+        this.lon = event.lon;
+      }
+    },
+  };
+</script>
 
-@media (min-width: 1024px) {
-  header {
+<style lang="scss">
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    flex-direction: row;
+    
+    .map, 
+    .search {
+      width: 50%;
+      height: 100vh;
+    }
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  .search {
+    background-color: rgb(31, 31, 31);
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  body {
+    -ms-overflow-style: none; /* IE, edge */
+    scrollbar-width: none; /* firefox */
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none; /* chorme, safari, opera */
+    }
   }
-}
+
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      
+      .map, 
+      .search {
+        width: 100%;
+        height: 50vh;
+      }
+    }
+
+    .list {
+      height: calc(100vh - (50vh + 146px));
+      overflow-y: scroll;
+    }
+  }
 </style>

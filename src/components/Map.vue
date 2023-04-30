@@ -1,0 +1,68 @@
+<template>
+  <div style="height: 100%; width: 100%;">
+  <!-- @ready="onReady" -->
+  <l-map
+    ref="map"
+    v-model:zoom="zoom"
+    :center="
+      parseFloat(lat) === 0
+      ? markerLatLng
+      : [parseFloat(lat), parseFloat(lon)]
+    "
+  >
+    <l-tile-layer
+      :url="url"
+      :attribution="attribution"
+      layer-type="base"
+      name="OpenStreetMap"
+    ></l-tile-layer>
+    <l-marker
+      :lat-lng="
+        parseFloat(lat) === 0
+          ? markerLatLng
+          : [parseFloat(lat), parseFloat(lon)]
+      "
+      :icon="icon"
+    ></l-marker>
+  </l-map>
+  </div>
+</template>
+
+<script lang="ts">
+import "leaflet/dist/leaflet.css";
+import { 
+  LMap, 
+  LTileLayer,
+  LMarker,
+  LIcon,
+  LPopup,
+} from "@vue-leaflet/vue-leaflet";
+import L from "leaflet";
+import icon from "../images/marker-icon.png"
+
+export default {
+  name: "Map",
+  components: {
+    LMap,
+    LTileLayer,
+    LMarker,
+    LIcon,
+    LPopup
+  },
+  data() {
+    return {
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution:
+        '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a>',
+      zoom: 8,
+      markerLatLng: ["47.31322", "-1.319482"],
+      icon: L.icon({
+        iconUrl: icon,
+        iconAnchor: [16, 37]
+      }),
+    };
+  },
+  props: ["lat", "lng"],
+
+};
+</script>
