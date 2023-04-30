@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="search-input" style="maargin: 15px 15px 0px 15px">
     <v-text-field
       v-model:String="text"
@@ -100,3 +101,17 @@ export default {
   }
 }
 </style>
+=======
+  <p>Search Box</p>
+</template>
+
+<script lang="ts">
+  export default {
+    name: "Search",
+  }
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+>>>>>>> 25925512a4670f8e971cb2a841eff4b4b2707003
